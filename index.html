@@ -1,129 +1,386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physical AI Energy Systems Lab | Saemangeum</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Physical AI Energy Systems Lab | 金永喆教授 (Prof. Young-Chul Kim)</title>
+    <!-- 引入高科技字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 引入滚动动画库 -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
-        /* 关键：防止首屏跳动与空白 */
-        #home { 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;
+        :root {
+            --primary: #38bdf8;      /* 科技蓝 */
+            --secondary: #818cf8;    /* 靛青光 */
+            --accent: #10b981;       /* 能源绿 */
+            --bg-deep: #020617;      /* 深空黑 */
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        * { box-sizing: border-box; cursor: default; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-links a {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 背景系统：网格 + 粒子 + 光晕 */
+        .master-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -5;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+        }
+
+        #particleCanvas { position: absolute; top: 0; left: 0; filter: blur(0.5px); }
+
+        .cyber-grid {
+            position: absolute;
+            width: 400%; height: 400%;
+            top: -150%; left: -150%;
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 80px 80px;
+            transform: perspective(800px) rotateX(60deg);
+            animation: grid-advance 30s linear infinite;
+        }
+
+        @keyframes grid-advance {
+            from { transform: perspective(800px) rotateX(60deg) translateY(0); }
+            to { transform: perspective(800px) rotateX(60deg) translateY(80px); }
+        }
+
+        .energy-pulse {
+            position: absolute;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            animation: pulse-aura 10s infinite alternate;
+        }
+
+        @keyframes pulse-aura {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.7; transform: scale(1.2); }
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 60px;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.4rem; font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim); text-decoration: none;
+            margin-left: 30px; font-size: 0.8rem;
+            transition: 0.3s; position: relative;
+        }
+
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        /* 首屏展示 */
+        header {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 0 20px;
+        }
+
+        .glitch-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
             position: relative;
+            color: white;
+            animation: text-glow 2s infinite alternate;
+        }
+
+        @keyframes text-glow {
+            from { text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+            to { text-shadow: 0 0 30px rgba(56, 189, 248, 0.8); }
+        }
+
+        .hero-subtitle {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem; color: var(--primary); margin: 20px 0;
+        }
+
+        /* 通用卡片样式 */
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 40px;
+            transition: 0.5s;
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+        }
+
+        /* 研究领域网格 */
+        .content-section { padding: 100px 10%; max-width: 1400px; margin: auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .research-card {
+            height: 450px; border-radius: 24px; overflow: hidden;
+            position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 30px; background-size: cover; background-position: center;
+        }
+
+        .research-card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(transparent, rgba(2, 6, 23, 0.9));
+        }
+
+        .research-card * { position: relative; z-index: 2; }
+
+        /* 搜索框 */
+        .search-container { max-width: 800px; margin: 40px auto; display: flex; gap: 10px; }
+        input {
+            flex: 1; padding: 15px 25px; border-radius: 30px; border: 1px solid var(--border);
+            background: rgba(255,255,255,0.05); color: white; outline: none;
+        }
+        button {
+            padding: 15px 30px; border-radius: 30px; border: none;
+            background: var(--primary); color: var(--bg-deep); font-weight: bold;
+            font-family: 'Orbitron'; cursor: pointer; transition: 0.3s;
+        }
+        button:hover { box-shadow: 0 0 20px var(--primary); transform: scale(1.05); }
+
+        /* 页脚 */
+        footer {
+            background: rgba(2, 6, 23, 0.98); padding: 60px 10%;
+            border-top: 1px solid var(--border); text-align: center;
+        }
+
+        .advisor-profile {
+            display: inline-flex; align-items: center; gap: 20px;
+            background: var(--glass); padding: 15px 35px; border-radius: 100px;
+            border: 1px solid var(--primary); margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 50px; height: 50px; background: var(--primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: var(--bg-deep);
         }
     </style>
 </head>
 <body>
 
-    <div class="tech-bg-container">
-        <canvas id="particleCanvas"></canvas>
+    <div class="master-bg">
         <div class="cyber-grid"></div>
-        <div class="glow-sphere"></div>
+        <div class="energy-pulse"></div>
+        <canvas id="particleCanvas"></canvas>
     </div>
 
     <nav>
-        <a href="#home" class="logo">PAI-Lab</a>
+        <a href="#" class="logo">PAI ENERGY LAB</a>
         <div class="nav-links">
-            <a href="#research">Research</a>
-            <a href="publications/papers.html">Publications</a>
-            <a href="people/team.html">People</a>
-            <a href="saemangeum/project.html">Saemangeum</a>
-            <a href="#recruitment">Recruitment</a>
-            <a href="#contact">Contact</a>
+            <a href="#home">首页</a>
+            <a href="#research">研究领域</a>
+            <a href="#saemangeum">新万金项目</a>
+            <a href="#recruitment">人才招募</a>
+            <a href="#contact">联系我们</a>
         </div>
     </nav>
 
     <header id="home">
-        <div class="header-content" data-aos="zoom-in" data-aos-duration="1500">
-            <h1 class="glitch-text" data-text="Physical AI Energy Lab">Physical AI Energy Systems Lab</h1>
-            <p class="subtitle">물리적 인공지능 기반 에너지 시스템 연구 • 基于物理AI的能源系统研究</p>
-            <div class="hero-divider"></div>
-            <p class="mission-statement">Driving Renewable Intelligence in Saemangeum</p>
-            <div class="badge-container">
-                <span class="badge">Physical AI</span>
-                <span class="badge">ESS Control</span>
-                <span class="badge">PINNs Logic</span>
-            </div>
-            <div class="scroll-indicator"><span>Scroll to Explore</span></div>
+        <div data-aos="zoom-out" data-aos-duration="1500">
+            <h1 class="glitch-title">PHYSICAL AI</h1>
+            <h1 class="glitch-title" style="color: var(--primary);">ENERGY LAB</h1>
+            <p class="hero-subtitle">基于物理人工智能的储能系统智能控制与产教融合研究</p>
+            <div style="width: 200px; height: 2px; background: var(--primary); margin: 30px auto; box-shadow: 0 0 15px var(--primary);"></div>
+            <p style="max-width: 700px; color: var(--text-dim); line-height: 1.8;">
+                在新万金智能能源集群中，我们将物理定律与深度学习深度融合，<br>
+                致力于开发下一代高效、安全的储能系统 (ESS) 控制算法与智能电网技术。
+            </p>
         </div>
     </header>
 
     <section id="research" class="content-section">
-        <h2 class="section-title" data-aos="fade-up">Core Research / 핵심 연구</h2>
+        <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+            <h2>核心研究领域 / Core Research</h2>
+        </div>
         <div class="grid">
-            <div class="card glass-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="visual-icon pinns"></div>
-                <h3>Physical AI & PINNs</h3>
-                <p>Developing physics-informed models for battery degradation and energy efficiency.</p>
+            <div class="research-card glass-card" data-aos="fade-right" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800');">
+                <h3>物理 AI & PINNs</h3>
+                <p>将热力学与动力学物理约束引入神经网络，实现电池健康状态 (SOH) 的超高精度预测。</p>
             </div>
-            <div class="card glass-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="visual-icon grid-opt"></div>
-                <h3>ESS Intelligent Control</h3>
-                <p>Optimizing large-scale Energy Storage Systems for the Saemangeum microgrid.</p>
+            <div class="research-card glass-card" data-aos="fade-up" style="background-image: url('https://images.unsplash.com/photo-1581092334651-dd3c654acc6a?auto=format&fit=crop&q=80&w=800');">
+                <h3>ESS 智能控制</h3>
+                <p>基于强化学习的多目标优化控制策略，提升大规模储能系统在复杂电网环境下的响应速度。</p>
             </div>
-            <div class="card glass-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="visual-icon integration"></div>
-                <h3>Industry-Education</h3>
-                <p>Bridging academic Physical AI models with field industrial applications.</p>
+            <div class="research-card glass-card" data-aos="fade-left" style="background-image: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=800');">
+                <h3>新万金产教融合</h3>
+                <p>利用新万金 2.1GW 可再生能源基地的实测数据，构建从理论到工业应用的闭环验证平台。</p>
             </div>
         </div>
     </section>
 
-    <section class="search-section glass-card" data-aos="fade-up">
-        <h2>Global Research Search / 학술 검색中心</h2>
-        <div class="search-box-wrapper">
-            <input id="searchbox" placeholder="Search IEEE, IEEK, ScienceDirect...">
-            <div class="btn-group">
-                <button onclick="searchIEEE()">IEEE</button>
-                <button onclick="searchIEEK()">IEEK</button>
-                <button onclick="searchScienceDirect()">ScienceDirect</button>
+    <section id="saemangeum" class="content-section">
+        <div class="glass-card" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;" data-aos="flip-up">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: var(--primary);">新万金实证基地 / Saemangeum Site</h2>
+                <p style="line-height: 2; color: var(--text-dim);">
+                    作为韩国最大的可再生能源集群，新万金为我们的研究提供了无与伦比的现场数据支持。
+                    实验室通过与韩国群山大学 (Kunsan National University) 的深度产学合作，
+                    直接参与大规模光伏与风电并网的储能调峰实验。
+                </p>
+                <div style="margin-top: 20px;">
+                    <span class="badge" style="background: var(--primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold;">2.1GW PV Data</span>
+                    <span class="badge" style="background: var(--secondary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-left: 10px;">Smart Grid</span>
+                </div>
+            </div>
+            <div style="flex: 1; min-width: 300px; height: 300px; background: url('https://images.unsplash.com/photo-1509391366360-fe5bb658582f?auto=format&fit=crop&q=80&w=800') center/cover; border-radius: 20px; border: 1px solid var(--primary);"></div>
+        </div>
+    </section>
+
+    <section id="search" class="content-section" style="text-align: center;">
+        <div data-aos="zoom-in">
+            <h2>学术文献检索 / Research Portal</h2>
+            <div class="search-container">
+                <input type="text" id="dbSearch" placeholder="输入关键词，如 'PINN ESS', 'Smart Grid Control'...">
+                <button onclick="triggerSearch('ieee')">IEEE</button>
+                <button onclick="triggerSearch('ieek')">IEEK (韩)</button>
             </div>
         </div>
     </section>
 
-    <section id="recruitment" class="glass-card recruitment-section" data-aos="fade-up">
-        <h2 class="section-title">Recruitment / 인재 채용</h2>
-        <div class="recruitment-grid">
-            <div class="info-side">
-                <p>We invite researchers in <strong>Control Theory</strong> and <strong>AI</strong> to build the future of energy storage.</p>
-                <ul class="benefit-list">
-                    <li>PhD/Master Positions</li>
-                    <li>Internships with Industry Partners</li>
-                    <li>Global Publication Support</li>
-                </ul>
+    <section id="recruitment" class="content-section">
+        <div class="grid">
+            <div class="glass-card" data-aos="fade-up">
+                <h3>研究员招募 / Join Us</h3>
+                <p>我们长期招募控制理论、机器学习、电力系统背景的博士生、硕士生及博士后。</p>
+                <a href="mailto:yk@kunsan.ac.kr" style="color: var(--primary); text-decoration: none; font-weight: bold;">[ 立即联系 / Apply Now ]</a>
             </div>
-            <div class="action-side">
-                <a href="mailto:research@physicalai-lab.org" class="btn-primary">Apply & Join Us / 지원하기</a>
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>联系方式 / Contact</h3>
+                <p>📍 韩国全罗北道群山大学 能源研究中心</p>
+                <p>📧 yk@kunsan.ac.kr</p>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-grid">
-            <div class="contact-info">
-                <h4>Physical AI Energy Lab</h4>
-                <p>📍 Jeollabuk-do, South Korea (Saemangeum Cluster)</p>
-                <p>📧 research@physicalai-lab.org</p>
-            </div>
-            <div class="lab-links">
-                <h4>Links</h4>
-                <a href="https://github.com/PhysicalAI-Energy-Lab">GitHub Lab</a>
+    <footer>
+        <div class="advisor-profile" data-aos="fade-up">
+            <div class="avatar">YK</div>
+            <div style="text-align: left;">
+                <h4 style="margin: 0;">金永喆 教授 (Prof. Young-Chul Kim, Ph.D.)</h4>
+                <p style="margin: 0; font-size: 0.8rem; color: var(--text-dim);">韩国群山大学 (Kunsan National University) 实验室主任</p>
             </div>
         </div>
-        <div class="bottom-bar">
-            <p>© 2026 Physical AI Energy Systems Lab. Founding Advisor: Zhang Shuxin.</p>
-        </div>
+        <p style="color: var(--text-dim); margin-top: 20px;">© 2026 Physical AI Energy Systems Lab. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
+
+        // 跨库检索逻辑
+        function triggerSearch(type) {
+            const q = document.getElementById("dbSearch").value || "Physical AI ESS";
+            let url = "";
+            if(type === 'ieee') url = "https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=";
+            else if(type === 'ieek') url = "https://www.dbpia.co.kr/search/searchList?query=";
+            window.open(url + encodeURIComponent(q), "_blank");
+        }
+
+        // 粒子背景系统
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 120; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        function connect() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 - dist/1000})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        init();
+        animate();
     </script>
 </body>
 </html>
