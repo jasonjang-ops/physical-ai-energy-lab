@@ -6,9 +6,18 @@
     <title>Physical AI Energy Systems Lab | Saemangeum</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* 紧急修复：确保首屏立即渲染 */
+        #home { min-height: 100vh; display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .header-content { z-index: 10; position: relative; }
+    </style>
 </head>
 <body>
-    <canvas id="particleCanvas"></canvas>
+    <div class="tech-bg-container">
+        <canvas id="particleCanvas"></canvas>
+        <div class="cyber-grid"></div>
+        <div class="glow-sphere"></div>
+    </div>
 
     <nav>
         <a href="#home">Home</a>
@@ -21,111 +30,57 @@
     </nav>
 
     <header id="home">
-        <div class="header-content" data-aos="fade-up">
-            <h1>Physical AI Energy Systems Lab</h1>
+        <div class="header-content" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="glitch-text" data-text="Physical AI Energy Lab">Physical AI Energy Systems Lab</h1>
             <p class="subtitle">물리적 인공지능 기반 에너지 시스템 연구 • 基于物理AI的能源系统研究</p>
+            <div class="hero-divider"></div>
             <div class="badge-container">
                 <span class="badge">Physical AI</span>
                 <span class="badge">ESS Control</span>
-                <span class="badge">Saemangeum Microgrid</span>
-                <span class="badge">Industry-Education Integration</span>
+                <span class="badge">Digital Twin</span>
             </div>
         </div>
     </header>
 
-    <section id="research">
-        <h2 class="section-title" data-aos="fade-focus">Core Research Areas / 핵심 연구 분야</h2>
+    <section id="research" class="glass-card">
+        <h2 class="section-title" data-aos="fade-up">Core Research / 핵심 연구</h2>
         <div class="grid">
-            <div class="card" data-aos="flip-left" data-aos-delay="100">
-                <div class="visual-icon pinns-icon">
-                    <div class="wave"></div><div class="wave"></div><div class="wave"></div>
-                </div>
-                <h3>Physics-Informed Neural Networks (PINNs)</h3>
-                <p>Developing deep learning models constrained by thermodynamics for accurate battery SOH and SOC estimation.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="tech-icon">01</div>
+                <h3>PINNs & Battery</h3>
+                <p>Physics-Informed Neural Networks for high-accuracy ESS management.</p>
             </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="200">
-                <div class="visual-icon twin-icon">
-                    <div class="circle"></div><div class="pulse"></div>
-                </div>
-                <h3>Digital Twin for Saemangeum</h3>
-                <p>Creating virtual replicas of the 2.1GW PV/Wind infrastructure for real-time ESS optimization and fault diagnosis.</p>
-            </div>
-            <div class="card" data-aos="flip-left" data-aos-delay="300">
-                <div class="visual-icon control-icon">
-                    <div class="bar bar-1"></div><div class="bar bar-2"></div><div class="bar bar-3"></div>
-                </div>
-                <h3>Intelligent Control & Integration</h3>
-                <p>Bridging Physical AI algorithms with industrial BMS through robust, embedded edge computing solutions.</p>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="tech-icon">02</div>
+                <h3>Saemangeum Smart Grid</h3>
+                <p>Optimization of 2.1GW Renewable Energy Integration.</p>
             </div>
         </div>
     </section>
 
     <section class="search-section glass-card" data-aos="fade-up">
-        <h2>Cross-Database Academic Search / 학술 검색中心</h2>
-        <p>Access IEEE, IEEK, and ScienceDirect databases directly.</p>
+        <h2>Academic Search / 학술 검색</h2>
         <div class="search-group">
-            <input id="searchbox" placeholder="e.g. Reinforcement Learning ESS Control">
-            <div class="button-group">
-                <button onclick="searchIEEE()">IEEE Xplore</button>
-                <button onclick="searchIEEK()">IEEK (대한전자공학회)</button>
-                <button onclick="searchScienceDirect()">ScienceDirect</button>
-            </div>
+            <input id="searchbox" placeholder="Search IEEE/IEEK papers...">
+            <button onclick="searchIEEE()">IEEE</button>
+            <button onclick="searchIEEK()">IEEK</button>
         </div>
     </section>
 
-    <section id="recruitment" class="glass-card recruitment-section" data-aos="fade-up">
-        <h2 class="section-title">Join Our Team / 연구원 모집</h2>
-        <div class="recruitment-grid">
-            <div class="recruitment-info">
-                <p>We are seeking motivated <strong>PhD / Master Students</strong> and <strong>Postdoctoral Researchers</strong> interested in the confluence of Artificial Intelligence and Renewable Energy Systems.</p>
-                <p>Our lab provides a unique opportunity to work on multi-gigawatt scale field data from the **Saemangeum Renewable Energy Cluster**.</p>
-            </div>
-            <div class="recruitment-positions">
-                <h4>Open Positions</h4>
-                <ul>
-                    <li><span class="icon">🔬</span> PhD/Master in Control Theory & Machine Learning</li>
-                    <li><span class="icon">🔋</span> Research Engineer in ESS BMS Development</li>
-                    <li><span class="icon">🌐</span> Internship in Saemangeum Data Integration</li>
-                </ul>
-                <a href="mailto:jasonzhang0881@gmail.com?subject=Application for Physical AI Lab" class="btn-primary">Apply Now / 지원하기</a>
-            </div>
-        </div>
+    <section id="recruitment" class="glass-card" data-aos="fade-up">
+        <h2 class="section-title">Recruitment / 인재 채용</h2>
+        <p>Seeking PhD and Masters in Control Theory & Physical AI.</p>
+        <a href="mailto:research@physicalai-lab.org" class="btn-primary">Apply Now</a>
     </section>
 
-    <section id="contact" class="glass-card contact-section" data-aos="fade-up">
-        <h2 class="section-title">Contact Us / 연락처</h2>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <span class="contact-icon">📍</span>
-                <h4>Location</h4>
-                <p>Saemangeum Renewable Energy Research Cluster, Jeollabuk-do, South Korea</p>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">📧</span>
-                <h4>Email</h4>
-                <p>jasonzhang0881@gmail.com</p>
-            </div>
-            <div class="contact-item">
-                <span class="contact-icon">🔗</span>
-                <h4>Lab Repository</h4>
-                <p><a href="https://github.com/PhysicalAI-Energy-Lab" target="_blank">github.com/PhysicalAI-Energy-Lab</a></p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Physical AI Energy Systems Lab. All Rights Reserved.</p>
-        <p>Affiliated with Saemangeum Renewable Energy Research Initiative (KR)</p>
+    <footer id="contact">
+        <p>© 2026 Physical AI Energy Systems Lab | Jeollabuk-do, South Korea</p>
     </footer>
 
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 100, 
-            easing: 'ease-in-out',
-            once: true 
-        });
+        AOS.init();
     </script>
 </body>
 </html>
