@@ -1,14 +1,7 @@
-/* =========================================
-   1. 配套主页升级的 CSS 更新
-   ========================================= */
-
-/* 1.1 AOS 动画基础调整 */
 [data-aos] {
     opacity: 0;
     transition-property: opacity, transform;
 }
-
-/* 1.2 Research 模块图标可视化 (纯 CSS 实现科技感图标) */
 .visual-icon {
     width: 60px;
     height: 60px;
@@ -21,8 +14,6 @@
     justify-content: center;
     background: rgba(56, 189, 248, 0.05);
 }
-
-/* PINNs 图标 (波形模拟) */
 .pinns-icon .wave {
     position: absolute;
     width: 100%; height: 100%;
@@ -32,8 +23,6 @@
 }
 .pinns-icon .wave:nth-child(2) { animation-delay: 0.5s; }
 .pinns-icon .wave:nth-child(3) { animation-delay: 1s; }
-
-/* Digital Twin 图标 (脉冲模拟) */
 .twin-icon .circle {
     width: 20px; height: 20px;
     background: var(--primary);
@@ -46,8 +35,6 @@
     background: rgba(56, 189, 248, 0.2);
     animation: pulse-ring 1.5s infinite;
 }
-
-/* Control 图标 (柱状图模拟) */
 .control-icon { display: flex; gap: 4px; border: none; }
 .control-icon .bar {
     width: 10px; height: 10px;
@@ -58,8 +45,6 @@
 .control-icon .bar-1 { height: 20px; animation-delay: 0.1s; }
 .control-icon .bar-2 { height: 40px; animation-delay: 0.2s; }
 .control-icon .bar-3 { height: 30px; animation-delay: 0.3s; }
-
-/* 1.3 Recruitment (招募) & Contact (联系) 模块样式 */
 .recruitment-grid, .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -124,10 +109,6 @@
 
 .contact-item a { color: #f1f5f9; text-decoration: none; }
 .contact-item a:hover { color: var(--primary); }
-
-/* =========================================
-   2. 关键帧动画定义
-   ========================================= */
 @keyframes wave-ripple {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(1.5); opacity: 0; }
