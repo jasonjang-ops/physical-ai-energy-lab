@@ -3,68 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physical AI Energy Systems Lab</title>
+    <title>Physical AI Energy Systems Lab | Saemangeum</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <canvas id="particleCanvas"></canvas>
-    <header>
-        <div class="header-content">
-            <h1>Physical AI Energy Systems Lab</h1>
-            <p class="subtitle">물리적 인공지능 기반 에너지 시스템 연구 • 基于物理AI的能源系统研究</p>
-        </div>
-    </header>
+
     <nav>
+        <a href="#home">Home</a>
         <a href="#research">Research</a>
         <a href="publications/papers.html">Publications</a>
         <a href="people/team.html">People</a>
         <a href="saemangeum/project.html">Saemangeum</a>
+        <a href="#recruitment">Join Us</a>
+        <a href="#contact">Contact</a>
     </nav>
-    <section id="hero" class="glass-card">
-        <h2>Advancing Energy Intelligence</h2>
-        <p>Integrating Laws of Physics with Neural Networks (PINNs) for the Next-Gen Smart Grid.</p>
-        <div class="badge-container">
-            <span class="badge">Physical AI</span><span class="badge">ESS Control</span><span class="badge">Saemangeum Project</span>
-        </div>
-    </section>
-    <section class="search-section glass-card">
-        <h2>Academic Search / 학술 검색</h2>
-        <div class="search-group">
-            <input id="searchbox" placeholder="Search Physical AI papers...">
-            <button onclick="searchIEEE()">IEEE Xplore</button>
-            <button onclick="searchIEEK()">IEEK (대한전자공학회)</button>
-        </div>
-    </section>
-    <script src="script.js"></script>
-    <section id="recruitment" class="glass-card">
-    <h2 class="section-title">Join Our Team / 연구원 모집</h2>
-    <div class="recruitment-content">
-        <p>我们正在寻找对 <strong>Physical AI</strong>、<strong>储能系统控制</strong> 和 <strong>新万金能源转型</strong> 感兴趣的研究生和博士后。</p>
-        <ul class="recruitment-list">
-            <li><strong>Position:</strong> PhD / Master / Internship</li>
-            <li><strong>Requirements:</strong> Background in Control Theory, Machine Learning, or Power Systems.</li>
-            <li><strong>Benefits:</strong> Competitive stipend, participation in Saemangeum field projects, and collaboration with IEEE/IEEK experts.</li>
-        </ul>
-        <a href="mailto:research@physicalai-lab.org" class="btn-primary">Apply Now / 지원하기</a>
-    </div>
-</section>
 
-<section id="contact" class="glass-card">
-    <h2 class="section-title">Contact Us / 연락처</h2>
-    <div class="contact-grid">
-        <div class="contact-item">
-            <h4>📍 Location</h4>
-            <p>Saemangeum Renewable Energy Research Cluster, South Korea</p>
+    <header id="home">
+        <div class="header-content" data-aos="fade-up">
+            <h1>Physical AI Energy Systems Lab</h1>
+            <p class="subtitle">물리적 인공지능 기반 에너지 시스템 연구 • 基于物理AI的能源系统研究</p>
+            <div class="badge-container">
+                <span class="badge">Physical AI</span>
+                <span class="badge">ESS Control</span>
+                <span class="badge">Saemangeum Microgrid</span>
+                <span class="badge">Industry-Education Integration</span>
+            </div>
         </div>
-        <div class="contact-item">
-            <h4>📧 Email</h4>
-            <p>research@physicalai-lab.org</p>
+    </header>
+
+    <section id="research">
+        <h2 class="section-title" data-aos="fade-focus">Core Research Areas / 핵심 연구 분야</h2>
+        <div class="grid">
+            <div class="card" data-aos="flip-left" data-aos-delay="100">
+                <div class="visual-icon pinns-icon">
+                    <div class="wave"></div><div class="wave"></div><div class="wave"></div>
+                </div>
+                <h3>Physics-Informed Neural Networks (PINNs)</h3>
+                <p>Developing deep learning models constrained by thermodynamics for accurate battery SOH and SOC estimation.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="200">
+                <div class="visual-icon twin-icon">
+                    <div class="circle"></div><div class="pulse"></div>
+                </div>
+                <h3>Digital Twin for Saemangeum</h3>
+                <p>Creating virtual replicas of the 2.1GW PV/Wind infrastructure for real-time ESS optimization and fault diagnosis.</p>
+            </div>
+            <div class="card" data-aos="flip-left" data-aos-delay="300">
+                <div class="visual-icon control-icon">
+                    <div class="bar bar-1"></div><div class="bar bar-2"></div><div class="bar bar-3"></div>
+                </div>
+                <h3>Intelligent Control & Integration</h3>
+                <p>Bridging Physical AI algorithms with industrial BMS through robust, embedded edge computing solutions.</p>
+            </div>
         </div>
-        <div class="contact-item">
-            <h4>🔗 Lab Social</h4>
-            <p>GitHub: @PhysicalAI-Energy-Lab</p>
+    </section>
+
+    <section class="search-section glass-card" data-aos="fade-up">
+        <h2>Cross-Database Academic Search / 학술 검색中心</h2>
+        <p>Access IEEE, IEEK, and ScienceDirect databases directly.</p>
+        <div class="search-group">
+            <input id="searchbox" placeholder="e.g. Reinforcement Learning ESS Control">
+            <div class="button-group">
+                <button onclick="searchIEEE()">IEEE Xplore</button>
+                <button onclick="searchIEEK()">IEEK (대한전자공학회)</button>
+                <button onclick="searchScienceDirect()">ScienceDirect</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section id="recruitment" class="glass-card recruitment-section" data-aos="fade-up">
+        <h2 class="section-title">Join Our Team / 연구원 모집</h2>
+        <div class="recruitment-grid">
+            <div class="recruitment-info">
+                <p>We are seeking motivated <strong>PhD / Master Students</strong> and <strong>Postdoctoral Researchers</strong> interested in the confluence of Artificial Intelligence and Renewable Energy Systems.</p>
+                <p>Our lab provides a unique opportunity to work on multi-gigawatt scale field data from the **Saemangeum Renewable Energy Cluster**.</p>
+            </div>
+            <div class="recruitment-positions">
+                <h4>Open Positions</h4>
+                <ul>
+                    <li><span class="icon">🔬</span> PhD/Master in Control Theory & Machine Learning</li>
+                    <li><span class="icon">🔋</span> Research Engineer in ESS BMS Development</li>
+                    <li><span class="icon">🌐</span> Internship in Saemangeum Data Integration</li>
+                </ul>
+                <a href="mailto:research@physicalai-lab.org?subject=Application for Physical AI Lab" class="btn-primary">Apply Now / 지원하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="glass-card contact-section" data-aos="fade-up">
+        <h2 class="section-title">Contact Us / 연락처</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <span class="contact-icon">📍</span>
+                <h4>Location</h4>
+                <p>Saemangeum Renewable Energy Research Cluster, Jeollabuk-do, South Korea</p>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <h4>Email</h4>
+                <p>research@physicalai-lab.org</p>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">🔗</span>
+                <h4>Lab Repository</h4>
+                <p><a href="https://github.com/PhysicalAI-Energy-Lab" target="_blank">github.com/PhysicalAI-Energy-Lab</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Physical AI Energy Systems Lab. All Rights Reserved.</p>
+        <p>Affiliated with Saemangeum Renewable Energy Research Initiative (KR)</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 初始化 AOS 滚动动画
+        AOS.init({
+            duration: 1000, // 动画持续时间 (ms)
+            easing: 'ease-in-out', // 动画曲线
+            once: true // 动画是否只播放一次
+        });
+    </script>
 </body>
 </html>
