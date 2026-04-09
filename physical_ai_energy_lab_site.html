@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physical AI Energy Systems Lab</title>
+<style>
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background:#0f172a;
+    color:#e5e7eb;
+}
+header{
+    background:#020617;
+    padding:40px;
+    text-align:center;
+    border-bottom:2px solid #334155;
+}
+header h1{
+    margin:0;
+    font-size:36px;
+}
+header h2{
+    margin-top:10px;
+    font-weight:normal;
+    color:#94a3b8;
+}
+nav{
+    background:#020617;
+    padding:15px;
+    position:sticky;
+    top:0;
+    text-align:center;
+    border-bottom:1px solid #334155;
+}
+nav a{
+    color:#38bdf8;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+h2{
+    border-bottom:2px solid #334155;
+    padding-bottom:10px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+th, td{
+    border:1px solid #334155;
+    padding:10px;
+    text-align:left;
+}
+th{
+    background:#1e293b;
+}
+blockquote{
+    border-left:4px solid #38bdf8;
+    padding-left:15px;
+    color:#cbd5f5;
+}
+.search-box{
+    margin-top:20px;
+}
+input[type="text"]{
+    width:80%;
+    padding:12px;
+    font-size:16px;
+    border-radius:6px;
+    border:none;
+}
+button{
+    padding:12px 20px;
+    font-size:16px;
+    margin-left:10px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+footer{
+    background:#020617;
+    padding:30px;
+    text-align:center;
+    border-top:1px solid #334155;
+}
+</style>
+
+<script>
+function searchIEEE(){
+    var q=document.getElementById("search").value;
+    window.open("https://ieeexplore.ieee.org/search/searchresult.jsp?queryText="+encodeURIComponent(q));
+}
+function searchScienceDirect(){
+    var q=document.getElementById("search").value;
+    window.open("https://www.sciencedirect.com/search?qs="+encodeURIComponent(q));
+}
+function searchIEEK(){
+    window.open("https://www.ieek.or.kr");
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Physical AI for Renewable Energy Systems</h1>
+<h2>물리적 인공지능 기반 재생에너지 시스템 연구</h2>
+</header>
+
+<nav>
+<a href="#research">Research / 연구 분야</a>
+<a href="#saemangeum">Saemangeum / 새만금</a>
+<a href="#search">Paper Search / 논문 검색</a>
+<a href="#publications">Publications / 연구 성과</a>
+<a href="#contact">Contact / 연락처</a>
+</nav>
+
+<section id="research">
+<h2>Research / 연구 분야</h2>
+
+<h3>Intelligent Control of ESS using Physical AI</h3>
+<h3>물리적 인공지능 기반 ESS 지능형 제어</h3>
+
+<p>
+Physical AI integrates physics-based modeling with machine learning to create robust control systems
+for energy infrastructure such as Energy Storage Systems (ESS).
+</p>
+
+<table>
+<tr>
+<th>Research Component</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>Battery State Estimation</td>
+<td>AI estimation of SoC, SoH, and degradation</td>
+</tr>
+
+<tr>
+<td>Predictive Energy Dispatch</td>
+<td>Optimization of charge/discharge scheduling</td>
+</tr>
+
+<tr>
+<td>Grid Interaction</td>
+<td>Adaptive control for renewable intermittency</td>
+</tr>
+
+<tr>
+<td>Thermal Safety Modeling</td>
+<td>Physics-informed safety modeling</td>
+</tr>
+</table>
+
+</section>
+
+<section id="saemangeum">
+
+<h2>Saemangeum Case Study / 새만금 산학연계 사례</h2>
+
+<p>
+The Saemangeum Renewable Energy Cluster is one of the largest renewable infrastructure projects in Asia,
+designed to integrate solar, wind, and large-scale ESS deployment.
+</p>
+
+<table>
+<tr>
+<th>Sector</th>
+<th>Role</th>
+</tr>
+
+<tr>
+<td>Universities</td>
+<td>AI algorithms & modeling</td>
+</tr>
+
+<tr>
+<td>Research Institutes</td>
+<td>Grid simulation & safety testing</td>
+</tr>
+
+<tr>
+<td>Industry</td>
+<td>ESS production and deployment</td>
+</tr>
+
+<tr>
+<td>Government</td>
+<td>Infrastructure and policy support</td>
+</tr>
+</table>
+
+<blockquote>
+Physical AI driven ESS control enables stable renewable integration and scalable energy management.
+</blockquote>
+
+</section>
+
+<section>
+
+<h2>Paper Search / 논문 검색</h2>
+
+<p>Enter keywords like <b>Physical AI</b>, <b>Battery Intelligence</b>, or <b>ESS Control</b></p>
+
+<div class="search-box">
+<input id="search" type="text" placeholder="Search papers...">
+<button onclick="searchIEEE()">IEEE</button>
+<button onclick="searchScienceDirect()">ScienceDirect</button>
+<button onclick="searchIEEK()">IEEK</button>
+</div>
+
+</section>
+
+<section id="publications">
+
+<h2>Publications / 연구 성과</h2>
+
+<table>
+
+<tr>
+<th>Year</th>
+<th>Title</th>
+<th>Journal</th>
+</tr>
+
+<tr>
+<td>2025</td>
+<td>Physical AI for Intelligent Energy Storage Systems</td>
+<td>IEEE Transactions on Smart Grid</td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td>Physics-Informed Neural Networks for Battery State Estimation</td>
+<td>Applied Energy</td>
+</tr>
+
+<tr>
+<td>2023</td>
+<td>AI Driven ESS Control for Renewable Microgrids</td>
+<td>Journal of Power Sources</td>
+</tr>
+
+</table>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact / 연락처</h2>
+
+<p><b>Physical AI Energy Systems Lab</b></p>
+<p>Email: research@physicalai-energy.org</p>
+<p>GitHub: https://github.com/physical-ai-energy-lab</p>
+
+</section>
+
+<footer>
+
+<p>© Physical AI Energy Systems Lab</p>
+<p>Saemangeum Renewable Energy Research Initiative</p>
+
+</footer>
+
+</body>
+</html>
