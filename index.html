@@ -1,59 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physical AI Energy Systems Lab</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical AI Energy Systems Lab</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<header>
-<h1>Physical AI Energy Systems Lab</h1>
-<p>물리적 인공지능 기반 재생에너지 시스템 연구</p>
-</header>
-
-<nav>
-<a href="#research">Research</a>
-<a href="publications/papers.html">Publications</a>
-<a href="people/team.html">People</a>
-<a href="saemangeum/project.html">Saemangeum</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<section id="hero">
-<h2>Future-Tech Research Platform</h2>
-<p>Physical AI • ESS Control • Renewable Smart Grid</p>
-</section>
-
-<section id="research">
-<h2>Research Areas</h2>
-<ul>
-<li>Physical AI Systems</li>
-<li>Energy Storage System Control</li>
-<li>Renewable Grid Optimization</li>
-</ul>
-</section>
-
-<section>
-<h2>Paper Search</h2>
-<input id="searchbox" placeholder="Search Physical AI papers">
-<button onclick="searchIEEE()">IEEE</button>
-<button onclick="searchScienceDirect()">ScienceDirect</button>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: Jasonzhang0881@gmail.com</p>
-<p>GitHub Lab Repository</p>
-</section>
-
-<footer>
-<p>© JasonJang's Physical AI Energy Systems Lab</p>
-</footer>
-
+    <canvas id="particleCanvas"></canvas>
+    <header>
+        <div class="header-content">
+            <h1>Physical AI Energy Systems Lab</h1>
+            <p class="subtitle">물리적 인공지능 기반 에너지 시스템 연구 • 基于物理AI的能源系统研究</p>
+        </div>
+    </header>
+    <nav>
+        <a href="#research">Research</a>
+        <a href="publications/papers.html">Publications</a>
+        <a href="people/team.html">People</a>
+        <a href="saemangeum/project.html">Saemangeum</a>
+    </nav>
+    <section id="hero" class="glass-card">
+        <h2>Advancing Energy Intelligence</h2>
+        <p>Integrating Laws of Physics with Neural Networks (PINNs) for the Next-Gen Smart Grid.</p>
+        <div class="badge-container">
+            <span class="badge">Physical AI</span><span class="badge">ESS Control</span><span class="badge">Saemangeum Project</span>
+        </div>
+    </section>
+    <section class="search-section glass-card">
+        <h2>Academic Search / 학술 검색</h2>
+        <div class="search-group">
+            <input id="searchbox" placeholder="Search Physical AI papers...">
+            <button onclick="searchIEEE()">IEEE Xplore</button>
+            <button onclick="searchIEEK()">IEEK (대한전자공학회)</button>
+        </div>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
