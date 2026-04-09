@@ -198,6 +198,25 @@
             box-shadow: 0 0 20px var(--primary);
         }
         .badge { background: var(--primary); color: #000; padding: 6px 18px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
+
+        /* 视频容器样式 */
+        .video-container {
+            flex: 1.2;
+            min-width: 350px;
+            height: 400px;
+            position: relative;
+            border-radius: 30px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(56,189,248,0.2);
+            overflow: hidden;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -268,7 +287,14 @@
                     <span class="badge" style="background: var(--secondary);">AI Smart Grid</span>
                 </div>
             </div>
-            <div style="flex: 1.2; min-width: 350px; height: 400px; background: url('https://www.saemangeum.go.kr/resources/images_eng/introduce/tour_smg11.jpg') center/cover; border-radius: 30px; border: 1px solid var(--primary); box-shadow: 0 0 30px rgba(56,189,248,0.2);"></div>
+            <!-- 替换图片为视频动画部分 -->
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/BQClBqwctAY?autoplay=1&mute=1&loop=1&playlist=BQClBqwctAY&controls=0&rel=0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -290,11 +316,11 @@
             <div class="glass-card" data-aos="fade-up" style="text-align: center;">
                 <h3 data-i18n="recruitment_title">全球研究员招募</h3>
                 <p data-i18n="recruitment_desc">我们长期招募控制理论、机器学习、电力系统背景的优秀人才加盟，共同定义能源未来。</p>
-                <a href="mailto:yk@kunsan.ac.kr" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.2rem; display: block; margin-top: 20px;">[ APPLY NOW ]</a>
+                <a href="mailto:JasonJang@kunsan.ac.kr" style="color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.2rem; display: block; margin-top: 20px;">[ APPLY NOW ]</a>
             </div>
             <div class="glass-card" data-aos="fade-up" data-aos-delay="200" style="text-align: center;">
                 <h3 data-i18n="nav_contact">联系方式</h3>
-                <p>📍 <span data-i18n="location">全罗北道群山大学 新能源集群研究中心</span></p>
+                <p>📍 <span data-i18n="location">全罗北特别自治道 群山国立大学 新能源集群研究中心</span></p>
                 <p>📧 JasonJang@kunsan.ac.kr</p>
             </div>
         </div>
@@ -308,7 +334,7 @@
                 <p style="margin: 0; font-size: 0.9rem; color: var(--text-dim);" data-i18n="footer_advisor_desc">韩国群山大学 (Kunsan National University) 实验室主任</p>
             </div>
         </div>
-        <p style="color: var(--text-dim);">&copy; 2026 JasonJang's Physical AI Energy Systems Lab. All Rights Reserved.</p>
+        <p style="color: var(--text-dim);">&copy; 2026 Physical AI Energy Systems Lab. All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -337,7 +363,7 @@
                 search_placeholder: "搜索关键词，如 'PINN ESS'...",
                 recruitment_title: "全球研究员招募",
                 recruitment_desc: "我们长期招募控制理论、机器学习、电力系统背景的优秀人才加盟，共同定义能源未来。",
-                location: "全罗北道群山大学 新能源集群研究中心",
+                location: "全罗北特别自治道 群山国立大学 新能源集群研究中心",
                 footer_advisor_title: "金永喆 教授 (Prof. Young-Chul Kim)",
                 footer_advisor_desc: "韩国群山大学 (Kunsan National University) 实验室主任"
             },
@@ -361,7 +387,7 @@
                 search_placeholder: "Keywords like 'PINN ESS'...",
                 recruitment_title: "Global Recruitment",
                 recruitment_desc: "We are seeking researchers with backgrounds in Control Theory and AI to join us in defining the future of energy.",
-                location: "Kunsan National University New Energy Research Center",
+                location: "Jeonbuk Special Self-Governing Province, Kunsan National University, New Energy Cluster Research Center",
                 footer_advisor_title: "Prof. Young-Chul Kim, Ph.D.",
                 footer_advisor_desc: "Director of PAI Lab, Kunsan National University"
             },
@@ -385,7 +411,7 @@
                 search_placeholder: "검색어 입력 (예: 'PINN ESS')...",
                 recruitment_title: "글로벌 연구원 모집",
                 recruitment_desc: "제어 이론, 머신러닝, 전력 시스템 배경을 가진 우수한 인재를 상시 모집합니다.",
-                location: "전라북도 군산대학교 에너지 클러스터 센터",
+                location: "전북특별자치도 국립군산대학교 신에너지 클러스터 센터",
                 footer_advisor_title: "김영철 교수 (Prof. Young-Chul Kim)",
                 footer_advisor_desc: "국립군산대학교 연구실 소장"
             }
